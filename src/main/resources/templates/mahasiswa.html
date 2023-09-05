@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Manajemen Mahasiswa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-$END$
+  <div class="container">
+    <div class="row">
+      <h1>List Mahasiswa</h1>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        <a th:href="@{/mahasiswa/new}" class="btn btn-primary btn-sm mb-3">Tambah Mahasiswa</a>
+      </div>
+    </div>
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th class="text-center">Nama Depan</th>
+          <th class="text-center">Nama Belakang</th>
+          <th class="text-center">Asal Daerah</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="data : ${mahasiswa}">
+          <td th:text="${data.namaDepan}"></td>
+          <td th:text="${data.namaBelakang}"></td>
+          <td th:text="${data.asalDaerah}"></td>
+          <td class="d-flex justify-content-evenly">
+<!--            ID BERASAL DARI DATA MAHASISWA YANG ADA DALAM DATABASE -->
+            <a th:href="@{/mahasiswa/edit/{id}(id=${data.id})}" class="btn btn-secondary">Update</a>
+            <a th:href="@{/mahasiswa/{id}(id=${data.id})}" class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
 </html>

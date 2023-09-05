@@ -1,10 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Tambah Mahasiswa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-$END$
+  <div class="container">
+    <div class="row">
+      <div class="col-log-6 col-md-6 col-sm-6 container justify-content-center card">
+        <h1 class="text-center">Tambah Data Mahasiswa</h1>
+        <div class="card-body">
+<!--          Object berasal dari nama atribut di MahasiswaController yang ada di model.addAttribute-->
+          <form th:action="@{/mahasiswa}" th:object="${mahasiswa}" method="post">
+            <div class="form-group">
+              <label>Nama Depan Mahasiswa</label>
+<!--              th:field berasal dari entity mahasiswa yaitu nama variabel namaDepan-->
+              <input type="text"
+                     name="namaDepan"
+                     th:field="*{namaDepan}"
+                     class="form-control"
+                     placeholder="Masukan Nama Depan Mahasiswa">
+            </div>
+            <div class="form-group">
+              <label>Nama Belakang Mahasiswa</label>
+<!--              th:field berasal dari entity mahasiswa yaitu nama variabel namaBelakang-->
+              <input type="text"
+                     name="namaBelakang"
+                     th:field="*{namaBelakang}"
+                     class="form-control"
+                     placeholder="Masukan Nama Belakang Mahasiswa">
+            </div>
+            <div class="form-group">
+              <label>Asal Daerah Mahasiswa</label>
+<!--              th:field berasal dari entity mahasiswa yaitu nama variabel asalDaerah-->
+              <input type="text"
+                     name="asalDaerah"
+                     th:field="*{asalDaerah}"
+                     class="form-control"
+                     placeholder="Masukan Asal Daerah Mahasiswa">
+            </div>
+            <div class="box-footer">
+              <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
